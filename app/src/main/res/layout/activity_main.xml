@@ -4,26 +4,29 @@
                 android:background="#ffffff"
                 android:layout_height="match_parent">
 
-    <com.lzh.repeatloadingimageviewdemo.repeatLoadingImageView.RepeatLoadingImageView
+    <com.lzh.repeatloadingimageviewdemo.repeatLoadingImageView.RepeatImageView
             android:id="@+id/img2"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/slogan"/>
-    <ImageView
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/splash_slogan"/>
+
+    <com.lzh.repeatloadingimageviewdemo.repeatLoadingImageView.RepeatImageView
             android:layout_below="@id/img2"
             android:layout_marginTop="-35dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/iv_line_anim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
-            android:src="@drawable/animation"/>
+            android:paddingRight="-30dp"
+            android:src="@mipmap/splash_line"/>
 
-    <ImageView android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_centerHorizontal="true"
-               android:layout_gravity="center_horizontal"
-               android:layout_alignParentBottom="true"
-               android:src="@mipmap/splash_bottom"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/splash_bottom"/>
 </RelativeLayout>
