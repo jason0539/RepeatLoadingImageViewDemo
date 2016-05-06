@@ -1,4 +1,4 @@
-package com.lzh.repeatloadingimageviewdemo;
+package com.lzh.repeatloadingimageviewdemo.repeatLoadingImageView;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
