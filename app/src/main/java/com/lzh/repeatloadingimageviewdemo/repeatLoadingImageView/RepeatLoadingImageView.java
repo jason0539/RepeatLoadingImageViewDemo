@@ -127,7 +127,7 @@ public class RepeatLoadingImageView extends ImageView {
         fgCanvas.drawColor(maskColor);
 
         Bitmap bitmap = combineBitmap(bgBmp, fgBmp);
-        mMaskDrawable = new BitmapDrawable(null, bitmap);
+        mMaskDrawable = new BitmapDrawable(null, bgBmp);
         mClipDrawable = new ClipDrawable(mMaskDrawable, mGravity, mOrientaion);
     }
 
