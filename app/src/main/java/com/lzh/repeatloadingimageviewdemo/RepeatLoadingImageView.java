@@ -32,15 +32,6 @@ public class RepeatLoadingImageView extends ImageView {
     private float mScaleX, mScaleY;
     private int mGravity = Gravity.LEFT;
     private int mOrientaion = ClipDrawable.HORIZONTAL;
-    private int mMaskOrientation = MaskOrientation.LeftToRight;
-
-    //Loading oriention
-    public static final class MaskOrientation {
-        public static final int LeftToRight = 1;
-        public static final int RightToLeft = 2;
-        public static final int TopToBottom = 3;
-        public static final int BottomToTop = 4;
-    }
 
     public RepeatLoadingImageView(Context context) {
         super(context);
@@ -59,9 +50,6 @@ public class RepeatLoadingImageView extends ImageView {
         initAttrs(context, attrs);
     }
 
-    /**
-     * initial attributes
-     */
     private void initAttrs(Context context, AttributeSet attrs) {
         if (attrs == null) {
             return;
@@ -69,9 +57,11 @@ public class RepeatLoadingImageView extends ImageView {
         setMaskColor(mMaskColor);
     }
 
-    /**
-     * initial paint
-     */
+    public void setMaskColor(int maskColor) {
+        initMaskBitmap(maskColor);
+        initAnim();
+    }
+
     private void init() {
         if (mImagePaint == null) {
             mImagePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -115,9 +105,6 @@ public class RepeatLoadingImageView extends ImageView {
         }
     }
 
-    /**
-     * combine tow bitmap to one bitmap
-     */
     private Bitmap combineBitmap(Bitmap bg, Bitmap fg) {
         Bitmap bmp = Bitmap.createBitmap(mImageWidth, mImageHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bmp);
@@ -178,63 +165,15 @@ public class RepeatLoadingImageView extends ImageView {
         }
     }
 
-    /**
-     * set animation duration
-     */
     public void setMaskAnimDuration(long duration) {
         mAnimDuration = duration;
         initAnim();
     }
 
-    /**
-     * start animation
-     */
     public void startMaskAnim() {
         if (mAnimator != null) {
             mAnimator.start();
         }
-    }
-
-    /**
-     * set mask color
-     */
-    public void setMaskColor(int maskColor) {
-        initMaskBitmap(maskColor);
-        initAnim();
-    }
-
-    /**
-     * set orientation
-     */
-    public void setMaskOrientation(int orientation) {
-        switch (orientation) {
-            case MaskOrientation.LeftToRight:
-                mGravity = Gravity.LEFT;
-                mOrientaion = ClipDrawable.HORIZONTAL;
-                break;
-            case MaskOrientation.RightToLeft:
-                mGravity = Gravity.RIGHT;
-                mOrientaion = ClipDrawable.HORIZONTAL;
-                break;
-            case MaskOrientation.TopToBottom:
-                mGravity = Gravity.TOP;
-                mOrientaion = ClipDrawable.VERTICAL;
-                break;
-            case MaskOrientation.BottomToTop:
-            default:
-                mGravity = Gravity.BOTTOM;
-                mOrientaion = ClipDrawable.VERTICAL;
-                break;
-        }
-        if (mMaskDrawable == null) {
-            return;
-        }
-        mClipDrawable = new ClipDrawable(mMaskDrawable, mGravity, mOrientaion);
-        initAnim();
-    }
-
-    public int getMaskOrientation() {
-        return mMaskOrientation;
     }
 
 }
